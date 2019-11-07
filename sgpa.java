@@ -77,3 +77,6 @@ class sgpa
   s1.printdetails();
 
  }} 
+
+
+

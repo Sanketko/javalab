@@ -1,79 +1,28 @@
 import java.util.Scanner;
-class student
- {String name,usn;
-  int n;
-  double[] credits,marks;
-  float cgpa; 
-  
-  student()
-{ 
-  Scanner s=new Scanner(System.in);
-  
-  System.out.println("enter name:\n");
-  name=s.next();
-  System.out.println("enter usn:\n");
-  usn=s.next();
-  System.out.println("enter no. of subjects:\n");
+public class RootsOfQuadraticEquation {
+   public static void main(String args[]){
+      double secondRoot = 0, firstRoot = 0;
+      Scanner sc = new Scanner(System.in);
+      System.out.println("Enter the value of a ::");
+      double a = sc.nextDouble();
 
-  n=s.nextInt();
-  
-  marks=new double[n];
-  credits=new double[n]; 
-  
-  System.out.println("enter credits :\n");
-  for(int i=0;i<n;i++)
-   {System.out.println("subject "+(i+1)+" ");
-    credits[i]=s.nextInt();}
+      System.out.println("Enter the value of b ::");
+      double b = sc.nextDouble();
 
-    System.out.println("marks :\n");
-    for(int j=0;j<n;j++)
-   {System.out.println("subject "+(j+1)+" ");
-    marks[j]=s.nextInt();} 
-}     
+      System.out.println("Enter the value of c ::");
+      double c = sc.nextDouble();
 
+      double determinant = (b*b)-(4*a*c);
+      double sqrt = Math.sqrt(determinant);
 
-
-void calcsgpa()
-{
- float tot=0;
-  float totalcred=0;
- int grade;
-
- for(int i=0;i<n;i++)
- {if(marks[i]>=90)
-  grade=10;
-  else if (marks[i]>=75 && marks[i]<90)
-  grade=9;
-  else if (marks[i]>=60 && marks[i]<75)
-  grade=8;
-  else if (marks[i]>=50 && marks[i]<60)
-  grade=7;
-  else if (marks[i]>=40 && marks[i]<50)
-  grade=6;
-  else grade=0;
- 
-  tot+=grade*credits[i];
-  totalcred+=credits[i];}
-
-
-  cgpa= tot/totalcred;}
-
-void printdetails()
-{System.out.println("usn: "+usn);
- System.out.println("name: "+name);
- System.out.println("number of subjects: "+n);
- System.out.println("marks: ");
- 
- for(int i=0;i<n;i++)
- {System.out.println(marks[i]);}
-
- System.out.println("Sgpa: "+cgpa);}
+      if(determinant>0){
+         firstRoot = (-b + sqrt)/(2*a);
+         secondRoot = (-b - sqrt)/(2*a);
+         System.out.println("Roots are :: "+ firstRoot +" and "+secondRoot);
+      }else if(determinant == 0){
+         System.out.println("Root is :: "+(-b + sqrt)/(2*a));
+       else
+         System.out.println("imaginary roots\n");
+      }
+   }
 }
-
-class sgpa
-{public static void main(String args[])
- {student s1= new student();
-  s1.calcsgpa();
-  s1.printdetails();
-
- }} 
